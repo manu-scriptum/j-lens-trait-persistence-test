@@ -357,16 +357,45 @@ risking, risked}; curious {curious, curiosity, inquisitive, fascination, fascina
 intrigued}; greedy {greedy, greed, stingy, miserly, selfish, hoard, hoarding, avarice, grasping}.
 
 ### Design spec for a future run (a fresh pre-registration, not a change to this one)
-1. Pre-register a concept *set* (synonyms + noun form) per trait; primary metric = best exact-rank
-   over the set (combines E1 and E6).
-2. Prefer noun lexicalizations (`patience, curiosity, heroism`) — E1.
-3. Read at content positions, not sentence-final periods — E2.
-4. Save exact rank at any depth (not just top-20) for the whole set, so sub-20 decay stays visible —
-   E3/E6.
-5. **Screen every inferred trigger for a strong d0 concept signal before the persistence sweep; rewrite
-   duds.** Peter (null) and Otto (weak) would have been caught. Biggest single lesson — you cannot
-   measure the decay of a signal that was never there.
-6. Use stronger, more stereotyped negative-trait behaviors for a valence-balanced design.
+
+A post-hoc reconsideration (see `results.md` §3) reframes what a follow-up should do. The core error
+to fix: **passive reads at sentence boundaries measure spontaneous saliency, not retrievability — you
+cannot test a cache without querying it.** Two redesigns follow, then refinements.
+
+**Redesign 1 — cued retrieval at each distance (the primary change).** Stop passively reading periods.
+At each distance *k*, run a separate sequence `[opening + trigger + filler(1..k)]` followed by a
+**probe** that licenses the trait — an open slot ("Maria is ___") or a two-alternative forced choice
+("Is Maria generous or stingy? Maria is ___") — and read the trait concept-set's rank *at the probe*.
+Every checkpoint is then a cache-read at a content-appropriate position. This separates the three
+states the current design smears together: spontaneously active (blackboard), dormant-but-retrievable
+(cache), and truly gone (eviction) — and makes the stated-vs-inferred decay question actually
+answerable. Include a no-trait control probe to baseline the slot. The KV-ablation causal test (erase
+the trait sentence's keys/values; does cued retrieval at distance survive, and equally in both arms?)
+rides on top of this.
+
+**Redesign 2 — interference / binding fidelity with a competing entity (the more novel question).**
+Persistence-over-time may be the wrong axis; the place stated and inferred plausibly dissociate is
+**binding fidelity under load.** Add a second character with a conflicting trait ("Maria is generous…
+Bruno is stingy…"), then probe at distance ("Is Maria generous or stingy?"). Pre-registered question,
+no direction: does the *inferred* trait mis-bind (Maria inherits Bruno's trait, or vice versa) more
+than the *stated* trait, and does mis-binding rise with distance / number of intervening entities?
+This connects to the binding literature (Mixing Mechanisms) rather than re-confirming the
+entity-tracking null, and the single-entity design here was structurally blind to it.
+
+**Refinements (carried over from the exploratory notes):**
+1. Pre-register a concept *set* (synonyms + noun form) per trait; primary metric = best exact-rank over
+   the set — E1/E6. Prefer noun lexicalizations (`patience, curiosity, heroism`).
+2. Save exact rank at any depth (not just top-20) for the whole set — E3/E6.
+3. **Screen every inferred trigger for a strong d0 concept signal before running** — Peter (null) and
+   Otto (weak) would have been caught. You cannot measure the decay of a signal that was never there.
+4. **Disentangle topic from attribution** (the Maria/shelter problem): the inferred behaviour must not
+   saturate the readout with the trait's *topic*. Either match the control's topic to the inferred
+   trigger's, or read only where the topic has receded and the entity is the sole cue.
+5. Stronger, more stereotyped negative-trait behaviours; more items before any quantitative claim.
+
+**Behavioural cross-check (optional, strongest ground truth).** Independently of the lens, end with a
+trait-diagnostic completion and test whether stated vs inferred changes the model's *output* — this
+sidesteps the readout-position problem entirely.
 
 ### Honesty caveats
 n=5, single-item medians, no statistics — every "count" is descriptive, not a test. Top-20 is a hard

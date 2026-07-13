@@ -5,9 +5,9 @@ Run: 2026-07-13 · `google/gemma-3-4b-it` · `jlens@581d398` · T4 · 15 texts �
 
 ## At a glance
 
-- **Inference is real but immediate.** For 4 of 5 characters the inferred trait was strongly
-  elevated over its matched control *at the trigger*, then decayed to baseline within one
-  intervening sentence.
+- **A trait signal appears at the trigger for 4 of 5 characters** — the inferred trait strongly
+  elevated over its matched control — then decays to baseline within one intervening sentence. (Some
+  of that d0 signal may be topic-priming rather than entity attribution; see §3.)
 - **No detectable decay difference between stated and inferred traits** — both collapse to baseline
   within one sentence. A floor-bounded, recency-dominated null (*neither* persisted), not
   demonstrated equivalence.
@@ -17,6 +17,9 @@ Run: 2026-07-13 · `google/gemma-3-4b-it` · `jlens@581d398` · T4 · 15 texts �
 - **Peter (`patient`) produced no inference signal at all** — an informative failure, not a data
   problem.
 - No statistics: n = 5, single-item medians. Everything below is descriptive.
+- **Design caveat found post-hoc:** passive reads at sentence boundaries measure spontaneous
+  saliency, not cued retrievability, so this design under-tests persistence. The reintroduction is
+  the load-bearing measurement — and there, stated traits re-cue better than inferred (4/5). See §3.
 
 This document reports the **pre-registered comparison first**, then a clearly separated
 **exploratory** section. The exploratory analysis does not modify the confirmatory result.
@@ -66,7 +69,9 @@ three we registered). Two cautions on how to read this null, because it is easy 
 So the defensible statement: the mode of introduction — stated outright vs. inferred from behavior —
 made **no detectable difference to persistence, in a regime where nothing much persisted.** It is a
 real, registered result that could have gone the other way; it is also a floor-bounded, underpowered
-null. Both are true.
+null. Both are true. And a deeper caveat applies (§3): reading at sentence-final periods measures
+spontaneous saliency, not cued retrievability, so this comparison is only weakly informative about
+persistence in the first place.
 
 ### 1c. Reintroduction: present but weak
 
@@ -130,29 +135,43 @@ What this measures is **trait-concept accessibility in the residual stream via t
 "the global workspace" in any theory-laden sense. The result is neutral on whether the J-space is a
 genuine workspace (that is a discriminant-validity question this design cannot touch).
 
-On "is the workspace a cache?": our readout does **not** behave like a persistent store — the trait
-is not held across intervening text; it looks reconstructed on cue. The reintroduction effect —
-genuine in 3 of 5, but modest — is consistent with reconstruction from the ordinary key/value cache
-when the name recurs, rather than with workspace-level storage. This leans toward a transient "blackboard" over a "cache," but it
-is a hint, not a verdict — we measured a *disposition-to-say* readout, not workspace contents, so
-absence from the readout is not absence from the model. A causal test (ablate the trait sentence's
-KV, see whether the reintroduction bump survives) would settle it; that is a goal for the follow-up run.
+**On "is the workspace a cache?" — this design mostly cannot tell, and an earlier draft of this
+section over-read it.** A cache is defined by *retrievability on demand*, and the only way to test one
+is to *query* it. But eleven of our thirteen checkpoints are passive reads at sentence-final periods,
+where the disposition-to-say is "begin a new sentence" — a trait adjective is contextually
+near-impossible there whether or not it is still bound to the entity. So the decay to baseline across
+the filler measures **spontaneous saliency turnover, not eviction**, and is only weakly informative
+about persistence as such. The one checkpoint that actually re-queries the entity without surface echo
+or fresh topic — the reintroduction — is the design's only genuine (if weak) cache-read, and it shows
+modest retrieval above baseline (inferred > control in 3 of 5), which a fully-evicted trait could not.
+Properly weighted, the little valid probing we have leans *weakly toward a dormant, retrievable
+binding* — not the transient "blackboard" the passive decay superficially suggested. Net: we cannot
+separate cache from blackboard here; if anything the evidence tilts to dormant-cache.
 
-**Why might stated and inferred traits behave the same? (Speculative.)** They could have dissociated
-— a literally-stated word might have echoed longer, or a hard-won inference might have been encoded
-more deeply and stuck. That they don't diverge has both a deflationary and a substantive reading.
-*Deflationary:* after one filler sentence neither is represented at all, and you cannot observe a
-provenance difference in a signal that is absent (the floor effect in §1b) — the more parsimonious
-account, and it cannot be ruled out here. *Substantive, if the convergence is real:* the model does
-not *maintain* either trait across the filler; both are reconstructed on demand from the key/value
-cache when the entity recurs, and that retrieval is blind to how the trait first arrived — a stated
-word and an implied behaviour both leave entity-bound tokens to attend back to. On this view any
-"cost" of inference is paid once, at encoding, and thereafter both are just an entity-bound attribute
-decaying under the same positional dynamics, their origin discarded. (The inferred arm does start
-weaker at d0, but that is expected from surface echo of the just-said word alone, so it is not clean
-evidence of an encoding cost.) The KV-ablation test would separate these: provenance-blind
-reconstruction predicts the reintroduction dies equally in both arms when the trait sentence's
-keys/values are erased; a pure floor effect predicts there was little to erase in either.
+**A stated-vs-inferred difference does appear — but in retrievability, not persistence.** At the
+reintroduction (the one cued checkpoint), the *stated* trait re-cues better than the *inferred* one in
+4 of 5 (all but Nadia: direct 13986/10085/1201/603/34990 vs inferred 23261/8161/7772/2286/42770). A
+sharp lexical token looks like a better retrieval key across distance than a diffuse inferred concept.
+This is the dissociation the pre-registered *decay* comparison failed to find — it was hiding in the
+wrong checkpoint. (n = 5; a lead, not a result.)
+
+**A confound we under-weighted: topic-priming vs. entity attribution.** At the inferred trigger,
+concepts like `donations/charity` may surface because the sentence we just read was *about a shelter*
+— topic saturation — rather than because "generous" became a property of the *Maria* entity. Maria is
+the starkest case: the shelter *is* the charity topic. The design cannot separate "we just discussed
+charity" from "the model now attributes generosity to Maria," and the reintroduction's weakness is
+weakly consistent with the d0 signal being more topic than binding. So "the model infers the trait" is
+less cleanly established than §1 implies.
+
+**Why does the (spontaneous) decay show no stated-vs-inferred difference? (Speculative.)** Two
+readings. *Deflationary:* after one filler sentence neither trait is spontaneously expressible, and
+you cannot see a provenance difference in a signal that is absent (the floor effect in §1b) — the
+parsimonious account, not rule-out-able here. *Substantive:* spontaneous saliency is provenance-blind
+(both fade alike), while cued retrieval is not (stated re-cues better, above) — consistent with the
+trait being compiled into an entity-bound attribute whose *retrieval key* still reflects whether it
+arrived as a literal token or as an inference. The KV-ablation test would probe the mechanism: does
+erasing the trait sentence's keys/values kill the reintroduction, and does it kill it *equally* in
+both arms?
 
 ---
 
@@ -164,6 +183,15 @@ keys/values are erased; a pure floor effect predicts there was little to erase i
 - The pre-registered single-token target is a conservative, noisy proxy (see E1/E6).
 - The readout is prediction-flavoured (fitted on wikitext) and read at sentence-final positions
   (see E2) — both bias what surfaces.
+- **Passive reads cannot test a cache.** A cache is a retrievability property; measuring it requires
+  *querying* at each checkpoint, not passively reading a period. This design does neither except,
+  accidentally, at the reintroduction — so the decay curve is only weakly informative about
+  persistence (see §3). The follow-up fixes this with cued retrieval.
+- **Single entity.** With one character per text, the design cannot test binding fidelity or
+  interference — whether an inferred trait stays attached to the right entity when a competing entity
+  is present.
+- **Control-trigger topic differs** from the inferred trigger's, so `inferred` vs `control` is not
+  perfectly matched even absent the trait; some d0 difference may be topic, not trait (see §3).
 
 ---
 
