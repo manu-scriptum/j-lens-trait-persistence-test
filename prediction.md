@@ -61,12 +61,12 @@ reintroduction sentence:
 9. A stray cat has taken to sleeping in the doorway of the shuttered cinema.
 10. The river that runs along the edge of town floods rarely, but the bridge was built high just in case.
 
-**Reintroduction sentence (identical for both conditions):** "It is Tuesday. Maria answers the phone."
+**Reintroduction sentence (identical for both conditions):** "It is Tuesday. Maria ties her shoelaces." (finalized — see addendum 2026-07-13 below; an earlier draft read "Maria answers the phone.")
 
 This sentence is not claimed to be topically neutral in an absolute sense — no sentence
 is. It is chosen only to avoid directly naming or describing the trait itself (unlike an
 earlier draft, "Maria takes a walk," dropped for its health/exercise association, which sits
-closer to trait-adjacent territory than "answers the phone" does). If some other,
+closer to trait-adjacent territory than "ties her shoelaces" does). If some other,
 unrelated concept co-occurs at this position in either condition, that is not treated as
 contamination of the test — `generous` surfacing (or not) at this point is the question of
 interest regardless of what else is present.
@@ -129,3 +129,22 @@ expected result. Every outcome listed below is of equal interest; none is a "win
   about language models generally.
 - This is new inference, not a re-analysis of existing data — unlike the recency-controlled
   re-test in the other project, this requires an actual Colab run.
+
+## Addendum 2026-07-13 (before any run): reintroduction sentence finalized
+
+The reintroduction sentence is changed from "It is Tuesday. Maria answers the phone." to
+**"It is Tuesday. Maria ties her shoelaces."** No data has been run at the time of this
+change — this is still pre-registration, edited before any Colab execution; git history
+preserves the original wording. Rationale: "answers the phone" carries a faint but avoidable
+social/communicative valence — a phone call implies another person, a request, a possible
+interaction — whereas "ties her shoelaces" is a self-contained physical action with less
+unavoidable connotation, while equally avoiding any naming or description of generosity.
+This applies the same selection criterion that dropped the earlier "Maria takes a walk"
+draft (health/exercise association): prefer the most inert available action when it is
+equally easy to write. The structure is unchanged — still two sentences, still 14 total
+periods — so the checkpoint logic is unaffected.
+
+Also logged (implementation, not stimulus): the entity-mention checkpoint in the notebook
+was hardened to locate the last "Maria" by character offset rather than by exact
+token-string equality, so a subword tokenization of the name (e.g. "Mar" + "ia") cannot
+silently produce an empty match and crash the checkpoint lookup.
