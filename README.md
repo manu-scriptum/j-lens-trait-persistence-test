@@ -1,4 +1,4 @@
-# workspace-stickiness-test
+# j-lens-trait-persistence-test
 
 Does a character trait that is **stated outright** ("Maria is generous") stay accessible in a
 language model's internal state differently from one that must be **inferred from behavior**
