@@ -8,8 +8,9 @@ Run: 2026-07-13 · `google/gemma-3-4b-it` · `jlens@581d398` · T4 · 15 texts �
 - **Inference is real but immediate.** For 4 of 5 characters the inferred trait was strongly
   elevated over its matched control *at the trigger*, then decayed to baseline within one
   intervening sentence.
-- **No directional decay difference between stated and inferred traits.** Both collapse fast; the
-  pre-registered decay comparison is effectively a **recency-dominated null**.
+- **No detectable decay difference between stated and inferred traits** — both collapse to baseline
+  within one sentence. A floor-bounded, recency-dominated null (*neither* persisted), not
+  demonstrated equivalence.
 - **Re-mentioning the character reactivates the inferred trait above baseline in 3 of 5 cases** — a
   genuine directional signal, and the one effect not obviously reducible to recency, but a modest,
   deep-rank one (the trait becomes less buried, not prominent).
@@ -51,10 +52,21 @@ non-monotonically. A direct sign that these mid-filler values are at the **noise
 frequently drops *below its own control* (e.g. Simon d2: inferred 7360 vs control 3195 — the control
 is stronger, which cannot happen if the trait were being actively held).
 
-Consequently, the pre-registered decay comparison shows **no reliable difference between the stated
-and inferred traits**: both fall to baseline within one sentence. This is the null outcome (outcome
-3 of the registered options) — consistent with a recency-dominated, "aggregate-at-query-time"
-account rather than sustained representation.
+Consequently, the pre-registered decay comparison shows **no detectable difference between the stated
+and inferred traits**: both fall to baseline within one sentence (the null outcome — option 3 of the
+three we registered). Two cautions on how to read this null, because it is easy to overclaim:
+
+- It is **"neither persisted," not "persisted equally."** With both arms on the floor after d1, there
+  is almost no dynamic range in which a provenance difference *could* appear, so the null does not
+  establish equivalence — it reflects that neither trait was represented, not that the two were
+  represented identically.
+- With **n = 5 and no equivalence test**, we can say a difference was *not detected*, not that none
+  exists. (Peter contributes nothing to this comparison, having produced no inferred signal at all.)
+
+So the defensible statement: the mode of introduction — stated outright vs. inferred from behavior —
+made **no detectable difference to persistence, in a regime where nothing much persisted.** It is a
+real, registered result that could have gone the other way; it is also a floor-bounded, underpowered
+null. Both are true.
 
 ### 1c. Reintroduction: present but weak
 
@@ -125,6 +137,22 @@ when the name recurs, rather than with workspace-level storage. This leans towar
 is a hint, not a verdict — we measured a *disposition-to-say* readout, not workspace contents, so
 absence from the readout is not absence from the model. A causal test (ablate the trait sentence's
 KV, see whether the reintroduction bump survives) would settle it; that is a goal for the follow-up run.
+
+**Why might stated and inferred traits behave the same? (Speculative.)** They could have dissociated
+— a literally-stated word might have echoed longer, or a hard-won inference might have been encoded
+more deeply and stuck. That they don't diverge has both a deflationary and a substantive reading.
+*Deflationary:* after one filler sentence neither is represented at all, and you cannot observe a
+provenance difference in a signal that is absent (the floor effect in §1b) — the more parsimonious
+account, and it cannot be ruled out here. *Substantive, if the convergence is real:* the model does
+not *maintain* either trait across the filler; both are reconstructed on demand from the key/value
+cache when the entity recurs, and that retrieval is blind to how the trait first arrived — a stated
+word and an implied behaviour both leave entity-bound tokens to attend back to. On this view any
+"cost" of inference is paid once, at encoding, and thereafter both are just an entity-bound attribute
+decaying under the same positional dynamics, their origin discarded. (The inferred arm does start
+weaker at d0, but that is expected from surface echo of the just-said word alone, so it is not clean
+evidence of an encoding cost.) The KV-ablation test would separate these: provenance-blind
+reconstruction predicts the reintroduction dies equally in both arms when the trait sentence's
+keys/values are erased; a pure floor effect predicts there was little to erase in either.
 
 ---
 
