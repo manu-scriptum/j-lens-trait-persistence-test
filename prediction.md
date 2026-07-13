@@ -148,3 +148,103 @@ Also logged (implementation, not stimulus): the entity-mention checkpoint in the
 was hardened to locate the last "Maria" by character offset rather than by exact
 token-string equality, so a subword tokenization of the name (e.g. "Mar" + "ia") cannot
 silently produce an empty match and crash the checkpoint lookup.
+
+## Addendum 2026-07-13 (v2): expansion to a five-character series
+
+Before any run; supersedes the single-character (Maria-only) design above. Motivation: one
+item cannot separate a real verbatim-vs-inferred difference from character-specific noise,
+and one positive trait cannot separate "inference persists" from "positive valence persists."
+Five characters give five replications of the same contrast; including one negative-valence
+trait gives a first, deliberately unbalanced look at whether any persistence pattern tracks
+inference or merely valence (connecting to the still-open valence confound in
+`jacobian-lens-experiment`). This is explicitly not a balanced factorial (four non-negative
+traits, one negative) — a first look, not a valence experiment.
+
+### The five characters (verbatim, fixed in advance)
+
+Each: a one-sentence opening ending "… in a small town outside Lyon", then one of three
+triggers, then the shared filler and reintroduction below.
+
+| Name | Trait | Valence | Role (opening) | Direct | Inferred (trait never named) |
+|---|---|---|---|---|---|
+| Maria | generous | + | corner bakery | Maria is generous. | Every night before closing up, Maria brings part of the unsold bread to a shelter. |
+| Peter | patient | + | carpentry workshop | Peter is patient. | Peter can fish the lake all morning without a single bite and still call it time well spent. |
+| Nadia | brave | + | health clinic | Nadia is brave. | When fire broke out in the stairwell, Nadia went back inside twice to carry out the people who could not move. |
+| Simon | curious | + | repair counter | Simon is curious. | Simon takes the back off every broken radio he finds, just to see how the parts fit together. |
+| Otto | greedy | − | packing depot | Otto is greedy. | Otto counts his money twice a night and never once picks up a bill. |
+
+### Three conditions per character
+
+- **Direct** — "[Name] is [trait]." (verbatim statement)
+- **Inferred** — the behavior sentence above; the trait word never appears.
+- **Control** — "[Name] is thirty-five and has worked in the town for the past nine years."
+  A trait-neutral baseline for the trait word's rank when the trait was never introduced.
+  One sentence, longer than a bare copula so it is not conspicuously short against the
+  inferred arm; it is a static biographical fact rather than an episodic behavior — a
+  residual mismatch with the inferred arm's form, accepted as good enough since the control
+  mainly supports the trait-word floor at the (identical) filler and reintroduction
+  checkpoints.
+
+5 characters × 3 conditions = 15 texts, one Colab run.
+
+### Shared filler (replaces the ten-sentence block in the body above)
+
+Mundane town geography/infrastructure/weather — no entity tied to any character, no commerce,
+no charity/need, no valence, checked against all five inferred scenes for lexical echoes:
+
+1. The town's main street runs in a straight line from the north gate to the central square.
+2. A row of plane trees stands along the pavement, tall enough to shade the whole street by midsummer.
+3. The central square is paved with grey cobblestones laid in a fan pattern.
+4. A stone fountain in the middle of the square has three tiers and runs from spring until autumn.
+5. The nearest railway station sits at the far end of a long avenue past the clock tower.
+6. Trains to the regional capital leave twice in the morning and once in the early afternoon.
+7. The weather in this region turns from dry summers to grey, rain-heavy winters.
+8. A ridge of low hills marks the eastern edge of the district, covered in scrub and loose rock.
+9. The oldest building still standing is a squat administrative hall with a tiled roof.
+10. A single road bridge crosses the river at the southern edge, wide enough for one lane of traffic.
+
+One noted residual: Peter's inferred sentence has him fishing "the lake" while filler #10
+mentions "the river" — different words, both water features. Judged negligible (a filler
+mention of a bridge over a river would at most re-cue the fishing *situation*, not the word
+"patient"); recorded here rather than silently ignored.
+
+### Shared reintroduction (generalizes the shoelaces sentence)
+
+"It is Tuesday. [Name] ties his/her shoelaces." — trait-neutral, self-contained; "Tuesday"
+no longer collides with the filler (the council sentence is gone).
+
+### Reading plan and analysis (updated)
+
+Checkpoints, band, and per-position readout unchanged, applied per character per condition:
+distance 0 (trigger end), distances 1–10 (filler-sentence ends), reintro entity-mention (last
+occurrence of that character's name, by character offset), reintro sentence end. Period count
+is 14 for every text; the assert is retained.
+
+- **Primary statistic: median rank across the band** (best rank kept as secondary).
+- **Decay is compared as shape, each condition normalized to its own distance-0 — not as
+  absolute rank level.** The direct arm's early points partly reflect surface echo of the
+  just-stated trait word (unavoidable, and for the direct arm that echo *is* the verbatim
+  persistence we want to measure), so absolute heights of the direct and inferred curves are
+  not treated as comparable; only decay shapes and the within-condition reintroduction change
+  are.
+- **Reintroduction bump** is read within-condition (distance-10 → reintro), unaffected by
+  differing starting heights.
+- Exploratory top-20 vocabulary at every checkpoint (not pre-registered) doubles as the check
+  for wrong-target cases (e.g. a scene surfacing "kind" rather than "generous").
+
+### Prediction: still none
+
+No directional prediction, per character or in aggregate, for either the decay comparison or
+the reintroduction bump. The negative item (Otto/greedy) is included to see whether any
+pattern tracks inference or valence; no direction is predicted for that either. Fixed in
+advance: the stimulus set, the conditions, the checkpoints, the analysis plan — not any
+expected result.
+
+### Limitations (in addition to the single-item version's)
+
+- Five characters, one trait each; four non-negative and one negative — not a balanced
+  valence design. A first look, not a factorial.
+- Trait words differ in frequency/tokenization; cross-character absolute ranks are not
+  directly comparable — another reason the analysis is within-character and shape-based.
+- Any trait word that fails the single-token check is swapped and re-registered before the
+  readout, never silently substituted.
