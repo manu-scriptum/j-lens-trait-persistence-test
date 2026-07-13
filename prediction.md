@@ -302,3 +302,73 @@ that did not exist, or was not available outside a very limited setting, until r
 contribution we can honestly claim is the application and a clean, reproducible measurement — not
 the invention of the question. This is deliberately modest: a shallow search does not prove
 nonexistence, and if a direct precedent surfaces, this note gets updated rather than defended.
+
+## Addendum 2026-07-13 (post-run): exploratory analysis and v3 design spec
+
+**Status: POST-HOC / EXPLORATORY.** Written after the run, after seeing the data. It does **not**
+modify the pre-registered comparison. The confirmatory result (pre-registered rank of the single
+trait adjective) belongs in `results.md` (pending, after a data walkthrough); this section records
+exploratory observations and the design lessons they imply for a future run (v3), kept here so the
+reasoning that motivates v3 is dated and auditable.
+
+Run environment: `gemma-3-4b-it`, `jlens@581d398`, T4; 15 texts × 13 checkpoints × 18-layer band
+(layers 12–29). Row counts verified (`results` 4914, `top20` 70200) — completeness confirmed by
+arithmetic.
+
+### Confirmatory result, one line (full writeup pending in results.md)
+The pre-registered target (single-token trait adjective, e.g. `generous`) was strongly elevated over
+its matched control **only at distance 0**, decayed to ≈baseline within one filler sentence, and
+showed only a modest deep-rank improvement at re-mention. Peter/`patient` produced no d0 signal.
+
+### Exploratory observations (not pre-registered)
+
+- **E1 — The trait is carried by sibling lexicalizations (nouns/synonyms) that the pre-registered
+  adjective undercounts.** Concept-lexicon scan (pre-declared sets, below) over the top-20: at d0 the
+  concept sits at **rank 1 in 11–13 of 18 layers** for Maria (`donations, charity, kindness`), Nadia
+  (`heroism, courage, bravery, risking`), Simon (`curiosity, fascination`). For Maria the
+  pre-registered `generous`=768 badly understated an inference actually at rank 1 under `donations`.
+  Nouns dominate.
+- **E2 — Reading at the sentence-final period biases toward sentence-openers.** The top-20 at every
+  trigger-end is dominated by discourse-continuation tokens (`But, However, Despite, Every`, pronouns)
+  — the readout predicts the *next sentence's start*; trait tokens sit beneath that structural layer.
+- **E3 — The collapse is concept-wide, not lexical.** Across d1–d10 the entire concept neighborhood
+  leaves the top-20 for every character and condition, and the single-token exact rank independently
+  decays to the tens-of-thousands. Both analyses agree: the trait is genuinely gone by the first
+  filler sentence, not merely re-spelled.
+- **E4 — The median did not hide a persistent sub-band signal.** Best-layer (min over 18) beats the
+  control's best-layer at ≈50% of off-d0 checkpoints — chance. Collapse is not a median artifact. One
+  structural note: d0 inference peaks mid-band (best layer ≈18–19 of 34, ~54% depth) for all four
+  characters that inferred.
+- **E5 — Re-mention reactivation is modest and deep-rank, not a return to salience.** At the entity
+  re-mention the single-token rank improves (e.g. Maria inferred 47872→23261) but the concept does
+  **not** re-enter the top-20 (only Otto flickers: `greed`, one layer). Real but small — "less
+  buried," not "reactivated to prominence." (This tempers an over-warm reading made mid-analysis.)
+- **E6 — The two readouts are complementary, each blind in one direction.** The concept-scan (top-20)
+  sees Maria's strong-but-diffuse signal the single adjective missed, but is blind to Otto's weak
+  `greed` (real at rank ≈1550, below the top-20 ceiling), which the exact-rank analysis caught.
+  Neither alone suffices.
+
+Pre-declared concept sets used in E1/E3 (declared before scanning; mildly contaminated in that a few
+tokens — `donations, charity, curiosity, heroism, patience` — had been seen in the earlier top-20
+spot-check): generous {generous, generosity, giving, gives, gave, charity, charitable, donations,
+donation, donate, kind, kindness, selfless}; patient {patient, patience, calm, calmly, unhurried,
+tolerant, waited, waiting}; brave {brave, bravery, courage, courageous, heroism, hero, fearless,
+risking, risked}; curious {curious, curiosity, inquisitive, fascination, fascinated, wonder,
+intrigued}; greedy {greedy, greed, stingy, miserly, selfish, hoard, hoarding, avarice, grasping}.
+
+### Design spec for v3 (a future pre-registration, not a change to this one)
+1. Pre-register a concept *set* (synonyms + noun form) per trait; primary metric = best exact-rank
+   over the set (combines E1 and E6).
+2. Prefer noun lexicalizations (`patience, curiosity, heroism`) — E1.
+3. Read at content positions, not sentence-final periods — E2.
+4. Save exact rank at any depth (not just top-20) for the whole set, so sub-20 decay stays visible —
+   E3/E6.
+5. **Screen every inferred trigger for a strong d0 concept signal before the persistence sweep; rewrite
+   duds.** Peter (null) and Otto (weak) would have been caught. Biggest single lesson — you cannot
+   measure the decay of a signal that was never there.
+6. Use stronger, more stereotyped negative-trait behaviors for a valence-balanced design.
+
+### Honesty caveats
+n=5, single-item medians, no statistics — every "count" is descriptive, not a test. Top-20 is a hard
+ceiling that censors weak/decayed signal. The concept lexicon is exploratory and pre-declared but
+mildly contaminated. None of this modifies the confirmatory comparison.
