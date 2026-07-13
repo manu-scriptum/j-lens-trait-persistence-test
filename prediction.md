@@ -248,3 +248,57 @@ expected result.
   directly comparable — another reason the analysis is within-character and shape-based.
 - Any trait word that fails the single-token check is swapped and re-registered before the
   readout, never silently substituted.
+
+## Addendum 2026-07-13 (v2.1): control design — why a clean control is the hard part
+
+The control arm went through three forms before this one; the reasoning is recorded here because
+"what counts as a neutral control" is genuinely the hardest decision in the design.
+
+The control's job is to give the baseline rank of the trait word when the trait was **never
+introduced** — the floor against which a decay curve or a reintroduction bump is read. For that
+floor to mean anything, the control should resemble the two test conditions in everything *except*
+the trait.
+
+That is where it gets hard: **there is no trait-neutral sentence in an absolute sense.** Any
+concrete sentence about a person invites *some* inference — a bare biographical fact implies
+stability or rootedness; a vivid action implies whatever disposition it looks like. So "a control
+that implies no trait" is unreachable. The achievable bar is weaker and more precise: a control
+that **does not preferentially imply the specific trait word we read**. A routine that makes Maria
+look mildly orderly is fine, because "orderly" is not "generous" and will not inflate the rank of
+*generous*.
+
+Two earlier forms were rejected:
+1. A bare copula — "[Name] is thirty-five." — matches the *direct* arm's frame but is
+   conspicuously short and static against the inferred arm's vivid multi-clause behavior; it
+   controls the wrong thing.
+2. A longer biographical fact — "[Name] is thirty-five and has worked in the town for the past
+   nine years." — fixes the length but is still a static *fact*, whereas the inferred arm is an
+   episodic *behavior*. Fact and behavior differ in kind, so the baseline would not be matched to
+   the arm it most needs to anchor.
+
+Settled form: a **per-character, role-obligatory morning routine** — episodic like the inferred
+arm, mundane, and chosen to avoid both the character's target trait and any lexical echo of the
+character's inferred scene:
+
+- Maria: "Every morning Maria unlocks the bakery and sorts the flour delivery by the back door."
+- Peter: "Every morning Peter sweeps the sawdust from the workshop floor and lays out his tools."
+- Nadia: "Every morning Nadia checks the clinic's supply cupboard and signs the register at the desk."
+- Simon: "Every morning Simon raises the shutter and lines up the tickets for the day's repairs."
+- Otto: "Every morning Otto unlocks the depot gates and marks the arriving crates against the delivery sheet."
+
+Stated residual: these routines imply generic conscientiousness ("does their job"), which is not
+trait-free — but it is orthogonal to the five target words (generous / patient / brave / curious /
+greedy), which is the only neutrality the control actually requires. Otto's routine deliberately
+involves checking crates against a sheet, **not** counting money, so it does not brush against his
+greedy inferred scene. One sentence each; the 14-period structure is unchanged.
+
+## Note on novelty and prior work
+
+We are not claiming this question is unprecedented. The general shape — does an inferred property
+persist differently from a stated one — has plausibly been gestured at in the entity-tracking and
+binding literature (see the literature notes compiled for this project). What is distinctive here
+is the *instrument*: reading trait persistence through the Jacobian lens, a workspace-style readout
+that did not exist, or was not available outside a very limited setting, until recently. The
+contribution we can honestly claim is the application and a clean, reproducible measurement — not
+the invention of the question. This is deliberately modest: a shallow search does not prove
+nonexistence, and if a direct precedent surfaces, this note gets updated rather than defended.
