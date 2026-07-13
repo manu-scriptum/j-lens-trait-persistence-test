@@ -8,9 +8,20 @@ language model's internal state differently from one that must be **inferred fro
 Measured by reading the trait word out of the model's residual stream with the **Jacobian lens**
 (J-lens), across a neutral filler block, for five characters.
 
-> **Status: pre-registered, not yet run.** `prediction.md` was committed before any code, and every
-> design change since is logged there as a dated addendum. This README describes the frozen design;
-> a results section will be added after the run.
+> **Status: run complete (2026-07-13).** Pre-registered in `prediction.md` before any code; the run
+> and analysis are reported in [`results.md`](results.md). This README describes the design; the
+> findings summary is below.
+
+## Findings at a glance
+
+- **Inference is real but immediate.** For 4 of 5 characters the inferred trait was strongly elevated
+  over its matched control *at the trigger*, then decayed to baseline within one intervening sentence.
+- **No stated-vs-inferred decay difference** — both collapse fast; the pre-registered decay
+  comparison is a **recency-dominated null**.
+- **Re-mentioning the character reactivates the inferred trait above baseline in 3 of 5** — a genuine
+  directional signal (the one effect not obviously recency), but modest and deep-rank.
+- **Peter (`patient`) produced no inference at all** — an informative failure.
+- n = 5, single-item medians, no statistics. Full report and caveats: [`results.md`](results.md).
 
 ## The question, precisely
 
