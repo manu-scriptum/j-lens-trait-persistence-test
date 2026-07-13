@@ -106,7 +106,7 @@ lexicons are in the `prediction.md` post-run addendum (E1–E6). In brief:
   signal the adjective missed; the exact-rank analysis sees Otto's weak `greed` (≈1550, below the
   top-20 ceiling) the concept-scan missed. Neither alone suffices.
 
-These observations are the basis for the v3 design spec in `prediction.md` (concept-set targets,
+These observations are the basis for the follow-up design spec in `prediction.md` (concept-set targets,
 noun forms, content-position reads, deeper-than-top-20 storage, d0 stimulus screening, and a
 KV-ablation test for cache-vs-reconstruction).
 
@@ -124,7 +124,7 @@ genuine in 3 of 5, but modest — is consistent with reconstruction from the ord
 when the name recurs, rather than with workspace-level storage. This leans toward a transient "blackboard" over a "cache," but it
 is a hint, not a verdict — we measured a *disposition-to-say* readout, not workspace contents, so
 absence from the readout is not absence from the model. A causal test (ablate the trait sentence's
-KV, see whether the reintroduction bump survives) would settle it; that is a v3 goal.
+KV, see whether the reintroduction bump survives) would settle it; that is a goal for the follow-up run.
 
 ---
 
@@ -142,7 +142,7 @@ KV, see whether the reintroduction bump survives) would settle it; that is a v3 
 ## Files
 
 - `prediction.md` — pre-registration + dated addenda (design, control rationale, novelty, post-run
-  exploratory notes + v3 spec).
+  exploratory notes + follow-up design spec).
 - `workspace_stickiness.ipynb` — the experiment (pinned environment).
 - `stimuli.csv` — the 15 exact texts fed in, with checkpoint tokens (provenance).
 - `stickiness_results.csv` — full raw sweep (4914 rows). `stickiness_top20.csv` — top-20 vocabulary

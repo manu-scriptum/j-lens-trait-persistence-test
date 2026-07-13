@@ -149,7 +149,7 @@ was hardened to locate the last "Maria" by character offset rather than by exact
 token-string equality, so a subword tokenization of the name (e.g. "Mar" + "ia") cannot
 silently produce an empty match and crash the checkpoint lookup.
 
-## Addendum 2026-07-13 (v2): expansion to a five-character series
+## Addendum 2026-07-13 — expansion to a five-character series
 
 Before any run; supersedes the single-character (Maria-only) design above. Motivation: one
 item cannot separate a real verbatim-vs-inferred difference from character-specific noise,
@@ -249,7 +249,7 @@ expected result.
 - Any trait word that fails the single-token check is swapped and re-registered before the
   readout, never silently substituted.
 
-## Addendum 2026-07-13 (v2.1): control design — why a clean control is the hard part
+## Addendum 2026-07-13 — control design: why a clean control is the hard part
 
 The control arm went through three forms before this one; the reasoning is recorded here because
 "what counts as a neutral control" is genuinely the hardest decision in the design.
@@ -303,13 +303,13 @@ contribution we can honestly claim is the application and a clean, reproducible 
 the invention of the question. This is deliberately modest: a shallow search does not prove
 nonexistence, and if a direct precedent surfaces, this note gets updated rather than defended.
 
-## Addendum 2026-07-13 (post-run): exploratory analysis and v3 design spec
+## Addendum 2026-07-13 (post-run): exploratory analysis and follow-up design spec
 
 **Status: POST-HOC / EXPLORATORY.** Written after the run, after seeing the data. It does **not**
 modify the pre-registered comparison. The confirmatory result (pre-registered rank of the single
 trait adjective) belongs in `results.md` (pending, after a data walkthrough); this section records
-exploratory observations and the design lessons they imply for a future run (v3), kept here so the
-reasoning that motivates v3 is dated and auditable.
+exploratory observations and the design lessons they imply for a future run, kept here so the
+reasoning that motivates the follow-up is dated and auditable.
 
 Run environment: `gemma-3-4b-it`, `jlens@581d398`, T4; 15 texts × 13 checkpoints × 18-layer band
 (layers 12–29). Row counts verified (`results` 4914, `top20` 70200) — completeness confirmed by
@@ -356,7 +356,7 @@ tolerant, waited, waiting}; brave {brave, bravery, courage, courageous, heroism,
 risking, risked}; curious {curious, curiosity, inquisitive, fascination, fascinated, wonder,
 intrigued}; greedy {greedy, greed, stingy, miserly, selfish, hoard, hoarding, avarice, grasping}.
 
-### Design spec for v3 (a future pre-registration, not a change to this one)
+### Design spec for a future run (a fresh pre-registration, not a change to this one)
 1. Pre-register a concept *set* (synonyms + noun form) per trait; primary metric = best exact-rank
    over the set (combines E1 and E6).
 2. Prefer noun lexicalizations (`patience, curiosity, heroism`) — E1.

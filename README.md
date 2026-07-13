@@ -48,7 +48,7 @@ reintroduction sentence. Only the trigger differs.
 - **inferred** — a behavior that implies the trait; the trait word never appears.
 - **control** — a trait-neutral role-obligatory routine (baseline for the trait word's rank when the
   trait was never introduced). Why a clean control is the hard part of the design is written up in
-  `prediction.md` (v2.1 addendum).
+  `prediction.md` (the control-design addendum).
 
 The trait word's rank/log-probability is read at 13 checkpoints (end of trigger, end of each of the
 10 filler sentences, the reintroduction name-mention, and the reintroduction sentence end), across
