@@ -2,7 +2,7 @@
 
 Committed before any code is written. This is a genuinely new question, separate from the
 negation-framing project (`jacobian-lens-experiment`) — it does not attempt to salvage or
-extend that project's thesis. Not pushed to a remote yet; local-only for now.
+extend that project's thesis.
 
 ## Background and motivation
 
@@ -307,7 +307,7 @@ nonexistence, and if a direct precedent surfaces, this note gets updated rather 
 
 **Status: POST-HOC / EXPLORATORY.** Written after the run, after seeing the data. It does **not**
 modify the pre-registered comparison. The confirmatory result (pre-registered rank of the single
-trait adjective) belongs in `results.md` (pending, after a data walkthrough); this section records
+trait adjective) is reported in `results.md`; this section records
 exploratory observations and the design lessons they imply for a future run, kept here so the
 reasoning that motivates the follow-up is dated and auditable.
 
@@ -315,10 +315,11 @@ Run environment: `gemma-3-4b-it`, `jlens@581d398`, T4; 15 texts × 13 checkpoint
 (layers 12–29). Row counts verified (`results` 4914, `top20` 70200) — completeness confirmed by
 arithmetic.
 
-### Confirmatory result, one line (full writeup pending in results.md)
-The pre-registered target (single-token trait adjective, e.g. `generous`) was strongly elevated over
-its matched control **only at distance 0**, decayed to ≈baseline within one filler sentence, and
-showed only a modest deep-rank improvement at re-mention. Peter/`patient` produced no d0 signal.
+### Confirmatory result, one line (full writeup in results.md)
+The pre-registered target (single-token trait adjective, e.g. `generous`) ranked far better than its
+no-trait control — a matched behaviour implying nothing — **only at distance 0**, then decayed to
+≈baseline within one filler sentence, with only a modest deep-rank improvement at re-mention.
+Peter/`patient` produced no d0 signal.
 
 ### Exploratory observations (not pre-registered)
 
