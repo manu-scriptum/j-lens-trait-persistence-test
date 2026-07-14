@@ -412,6 +412,34 @@ than the *stated* trait, and does mis-binding rise with distance / number of int
 This connects to the binding literature (Mixing Mechanisms) rather than re-confirming the
 entity-tracking null, and the single-entity design here was structurally blind to it.
 
+**Redesign 3 — the trait-direction probe (the representation test, and the primary held-concept arm).**
+Every lens above — logit, tuned, J — reads the same basis: *disposition to say the token*. A concept
+can be **represented as a feature while never being disposed to be said**, and no vocabulary-projection
+readout can see that. So to ask whether a trait is *held between the tokens*, read it as a **direction**,
+not a word. Fit a linear "generous" direction from contrastive activations (persona-vector style:
+trait-implying vs matched neutral contexts), validate it on held-out text, then read the residual
+stream's **projection onto that direction, continuously across the whole filler**, not just at
+checkpoints. The decisive contrast:
+- Direction stays **lit** across the filler while the token rank sits on the floor → the trait is
+  **held but unexpressed** — a held concept the vocabulary readouts were structurally blind to. This is
+  the strongest positive result available for held concepts, and only this probe can produce it.
+- Direction goes **dark** too → only the behavioural scene is retained; the trait genuinely isn't held,
+  and the reintroduction is re-inference.
+
+This adjudicates *held latent vs re-inference* observationally and continuously — for the held-concept
+question specifically it is cleaner than the KV-ablation, and being a readout (a linear probe, no
+intervention) it is in reach of the little lab. Cost: fitting the probe is a supervised step (labelled
+contrastive activations) with its own validity checks — does the direction capture the *entity-bound
+trait* rather than mere topic, and does it generalise off the fitting set. Treat a positive result as
+"represented as a linear feature," not automatically as a "global-workspace held concept" — still the
+separate, harder claim.
+
+**The three arms answer three different questions, and keeping them distinct is the point.**
+*Expression* (vocabulary readout — is it disposed to be said), *retrievability* (cued retrieval — is it
+recoverable on demand), *representation* (direction probe — is it held as a feature). This study only
+ever measured the first; the follow-up adds the other two, and most of the confusion in the original
+writeup came from reading an *expression* measurement as if it answered *representation*.
+
 **Refinements (carried over from the exploratory notes):**
 1. Pre-register a concept *set* (synonyms + noun form) per trait; primary metric = best exact-rank over
    the set — E1/E6. Prefer noun lexicalizations (`patience, curiosity, heroism`).
