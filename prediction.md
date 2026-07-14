@@ -9,7 +9,7 @@ extend that project's thesis.
 The negation-framing project found that `honest` ranked strongly under a prompt that never
 uses the word, only describes truth-telling behavior — inference, not echo. That raised a
 further, more general question with no clear answer in the literature we could find (one
-paper's full text checked directly, plus a broader search — see chat log; not an exhaustive
+paper's full text checked directly, plus a broader search; not an exhaustive
 review): **does a concept that must be inferred persist differently in the J-space than a
 concept that is simply stated outright, as more text intervenes?**
 
