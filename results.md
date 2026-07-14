@@ -5,9 +5,10 @@ Run: 2026-07-13 · `google/gemma-3-4b-it` · `jlens@581d398` · T4 · 15 texts �
 
 ## At a glance
 
-- **A trait signal appears at the trigger for 4 of 5 characters** — the inferred trait strongly
-  elevated over its matched control — then decays to baseline within one intervening sentence. (Some
-  of that d0 signal may be topic-priming rather than entity attribution; see §3.)
+- **A trait signal appears at the trigger for 4 of 5 characters** — the trait word ranks far better
+  after a behaviour that *implies* it than after a matched one that implies nothing (its control) —
+  then decays to baseline within one intervening sentence. (Some of that d0 signal may be topic-priming
+  rather than entity attribution; see §3.)
 - **No detectable decay difference between stated and inferred traits** — both collapse to baseline
   within one sentence. A floor-bounded, recency-dominated null (*neither* persisted), not
   demonstrated equivalence.
@@ -45,8 +46,10 @@ height (the `direct` arm's early strength is partly surface echo of the just-sta
 | Otto | greedy | 1550 | 17145 | present, weaker |
 | Peter | patient | 21658 | 24735 | **none** |
 
-Right after the behavioral sentence, the trait is strongly more accessible than in the control that
-never mentioned it — for everyone except Peter, whose fishing sentence produced no trait signal.
+Right after the behavioural sentence, the trait word ranks far better than in the control — the same
+character under a matched behaviour that implies *no* trait — for everyone except Peter, whose fishing
+sentence produced no signal. The comparison is inference-possible vs. nothing-to-infer, not two trait
+strengths on one scale.
 
 ### 1b. Across the filler: fast collapse, and no stated-vs-inferred difference
 
