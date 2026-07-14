@@ -427,6 +427,20 @@ entity-tracking null, and the single-entity design here was structurally blind t
 trait-diagnostic completion and test whether stated vs inferred changes the model's *output* — this
 sidesteps the readout-position problem entirely.
 
+**Standing lens baseline (include from now on — it is free).** Alongside the J-lens, read the same
+checkpoints with the **logit lens**: the model's own unembedding (`lm_head`) applied to the
+intermediate residual streams. No download, no training — it runs on activations already being captured
+— so there is no reason to omit it, ever. It buys two things for nothing: (1) **robustness** — if the
+crude logit lens shows the same pattern, the finding is not a J-lens artifact; and (2) a **discriminant
+test of the J-lens itself**, via the `{direct, inferred} × {logit, J-lens}` contrast — if the logit lens
+surfaces the *direct* (expressed) trait but not the *inferred* (latent-only) one while the J-lens
+surfaces both, that is the J-lens doing its claimed job of reading unexpressed latent content; if all
+lenses agree, the J-lens buys nothing on this task. Caveat: all three are vocabulary-projection
+transports, so this is a readout-robustness / discriminant check, **not** a representation probe — it
+cannot see a held-but-unexpressed concept (that is the direction-probe's job). A **tuned lens** would
+sharpen the discriminant test but needs one trained for `gemma-3-4b-it` specifically (only a public 27B
+lens was found, wrong size); add it only if one can be sourced or trained.
+
 ### Honesty caveats
 n=5, single-item medians, no statistics — every "count" is descriptive, not a test. Top-20 is a hard
 ceiling that censors weak/decayed signal. The concept lexicon is exploratory and pre-declared but
