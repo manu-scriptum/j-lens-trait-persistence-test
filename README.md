@@ -1,5 +1,8 @@
 # j-lens-trait-persistence-test
 
+*(New to this? See [**our primer**](PRIMER.md) — what this is, what we found, and why it might matter,
+in plain language with no background assumed.)*
+
 Does a character trait that is **stated outright** ("Maria is generous") stay accessible in a
 language model's internal state differently from one that must be **inferred from behavior**
 ("Maria brings the unsold bread to a shelter"), as unrelated text intervenes? And does merely
