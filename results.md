@@ -165,9 +165,34 @@ find; it was hiding in the wrong checkpoint. (n = 5; a lead with a mechanism, no
 concepts like `donations/charity` may surface because the sentence we just read was *about a shelter*
 — topic saturation — rather than because "generous" became a property of the *Maria* entity. Maria is
 the starkest case: the shelter *is* the charity topic. The design cannot separate "we just discussed
-charity" from "the model now attributes generosity to Maria," and the reintroduction's weakness is
-weakly consistent with the d0 signal being more topic than binding. So "the model infers the trait" is
-less cleanly established than §1 implies.
+charity" from "the model now attributes generosity to Maria" **at d0**. But the reintroduction *does*
+separate them, and this is the correction: it is **topic-free** — "It is Tuesday. Maria ties her
+shoelaces" contains no shelter, no charity, nothing but the name — so any inferred > control *there*
+cannot be topic-priming; it can only be the trait returning from the entity itself. That happens in 3
+of 5. So the topic confound bites the *magnitude of the d0 signal*, but the topic-independent
+reintroduction is the clean check, and it comes back positive in a majority — real (if modest) evidence
+of genuine entity-binding, not just a momentary charity echo. Read together: d0 is part-topic, the
+reintroduction isolates the binding part, and the binding part is there.
+
+**Strength vs. sophistication — and the best hint at a *held* concept.** Keep two things separate.
+First, "stated beats inferred" is not "verbatim is better": at the reintroduction the two arms do
+different work. Stated = resolve the coreference, then *look up* a stored token. Inferred = resolve the
+coreference, retrieve the behavioural scene, and *re-infer* the trait from it — a multi-step
+reconstruction triggered by a bare name. So the inferred arm is **modest in strength but far higher in
+mechanistic sophistication**; its weakness is the price of real reconstruction, not a failure. Second,
+the tantalising part: a topic-free trait that vanishes from the readout and then returns when only the
+*entity* is re-cued is exactly the observable you would want if you were hunting for a **held concept**
+— a latent property carried across intervening text and reactivated on demand. This is the best hint in
+the dataset for such a thing. But *hint*, not evidence, for a precise reason: "recoverable" is
+consistent with **two** mechanisms this design cannot tell apart — a genuinely *held* trait latent
+(stored, reactivated) versus a *held scene* from which the trait is *recomputed* (nothing trait-specific
+stored, only the behaviour). Their observables here are identical. Separating them is exactly what the
+KV-ablation / differential-fragility follow-up is for: a held latent survives ablation of the behaviour
+tokens and resists interference; pure re-inference dies with the scene. And even a confirmed held latent
+would show a *persistent entity-bound trait representation* — a real, modest object — not a "global
+workspace" in the theory-laden sense; that is a further, separate claim this line cannot reach. So:
+right paradigm, best hint so far, and a clean test already specified that would move it from hint to
+evidence.
 
 **Why does the (spontaneous) decay show no stated-vs-inferred difference? (Speculative.)** Two
 readings. *Deflationary:* after one filler sentence neither trait is spontaneously expressible, and
