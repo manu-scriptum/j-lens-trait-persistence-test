@@ -389,6 +389,20 @@ actual mechanism behind the stated > inferred retrievability lead, and the deep 
 cache-vs-blackboard question, made answerable per arm. (Credit: this asymmetry was missed in the
 original framing — the inferred trait's never-being-a-token was the thing hiding in plain sight.)
 
+**Feasibility / scope — the ablation is out of the read-only lab.** The ablation is an *intervention*,
+not a readout: it needs attention/KV-patching scaffolding (forward hooks or a library like `nnsight`)
+**and its own validation** — proving the ablation removed the intended trace and did not just break the
+model. That is beyond the read-only lens rig here; park the causal ablation as a proper-lab /
+agentic-run step, not the immediate next run. **What is in reach is its observational shadow —
+differential fragility.** The symbol-vs-re-inference distinction predicts a symbol lookup is *robust*
+(a fixed, sharp cached token) while re-inference from a *buried or contested* scene is *fragile*. So
+stress both arms with reads only — cued retrieval at growing distance, plus the competing-entity
+interference of Redesign 2 — and see which retrieval mode breaks first. If `inferred` craters faster
+than `stated` as distance and interference pile on, that is the observational fingerprint of the same
+mechanism. Correlational, not causal — it *motivates* the ablation rather than replacing it — but fully
+runnable in the little lab. **Primary next run = cued retrieval + interference + this fragility read;
+the KV-ablation is the eventual causal confirmation, elsewhere.**
+
 **Redesign 2 — interference / binding fidelity with a competing entity (the more novel question).**
 Persistence-over-time may be the wrong axis; the place stated and inferred plausibly dissociate is
 **binding fidelity under load.** Add a second character with a conflicting trait ("Maria is generous…
