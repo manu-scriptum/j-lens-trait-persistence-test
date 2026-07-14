@@ -51,14 +51,20 @@ character under a matched behaviour that implies *no* trait — for everyone exc
 sentence produced no signal. The comparison is inference-possible vs. nothing-to-infer, not two trait
 strengths on one scale.
 
-And read the control numbers as a *floor*, not as the trait appearing. A control rank like Nadia's
-11,502 for `brave` is roughly where the word idles in neutral text — set mostly by **base frequency**
-(a common word floors lower than a rare one, in any context; that, not any signal, is why the five
-controls differ from each other). The control also quietly absorbs the character's **role**, fixed in
-the shared opening (a clinic worker may sit a touch nearer `brave` than a baker), and any **lexical
-adjacency** in the control behaviour itself. This is exactly why the comparison is `inferred` vs
-`control` and never absolute rank: the control soaks up the frequency floor and the priming, so the gap
-isolates the trigger.
+Reading that table without the statistics: **rank is just queue position** — how many of the model's
+~262,000 words are ahead of `brave` in line to be said at that spot, so *lower = more active*. After
+the fire sentence, `brave` sat at rank **66**; in the control it sits at **11,502** — roughly **170×
+deeper in the queue**. That gap is the whole point. In the control, `brave` isn't "showing up weakly";
+it is idling about where the word sits in *any* text that never mentions bravery. The control did its
+job — it stayed at baseline.
+
+*Why* does it idle at ~11,500 rather than the very bottom? Mostly **base frequency**: every word has a
+default position set by how common it is, before any context (that, not any signal, is why the five
+controls differ from one another — `curious` is simply a more expected word than `patient`). The
+control also quietly absorbs the character's **role**, fixed in the shared opening (a clinic worker may
+sit a touch nearer `brave` than a baker), and any **lexical adjacency** in the control behaviour
+itself. All of which is exactly why the comparison is `inferred` vs `control` and never absolute rank:
+the control soaks up the frequency floor and the priming, so the gap isolates the trigger.
 
 ### 1b. Across the filler: fast collapse, and no stated-vs-inferred difference
 
