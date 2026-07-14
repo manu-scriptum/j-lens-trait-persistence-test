@@ -244,14 +244,18 @@ symbol itself. That is the deep cache-vs-blackboard question, made answerable pe
   is present.
 - **Control-trigger topic differs** from the inferred trigger's, so `inferred` vs `control` is not
   perfectly matched even absent the trait; some d0 difference may be topic, not trait (see §3).
-- **The control baseline is not perfectly clean.** Absolute control ranks are dominated by the target
-  word's base frequency, and additionally absorb (a) **role-priming** from the shared opening (a clinic
-  worker sits nearer `brave`; a repair-counter worker nearer `curious`) and (b) **lexical adjacency** in
-  the control behaviour (Peter's "lays out his tools" leans methodical ~ patient; Otto's "marks crates
-  against the delivery sheet" leans tallying ~ greedy). These are shared across conditions or
-  second-order, so the `inferred` vs `control` *gap* mostly survives — but absolute control numbers are
-  not trait presence, and a cleaner design would move openings and controls further from the trait's
-  semantic neighbourhood (without breaking the structural match).
+- **The control baseline is not perfectly clean, and the shared opening carries uncontrolled
+  associations.** Absolute control ranks are dominated by the target word's base frequency, and
+  additionally absorb (a) **role-priming** from the shared opening (a clinic worker sits nearer `brave`;
+  a repair-counter worker nearer `curious`), (b) **lexical adjacency** in the control behaviour (Peter's
+  "lays out his tools" leans methodical ~ patient; Otto's "marks crates against the delivery sheet"
+  leans tallying ~ greedy), and (c) the opening naming a **real city, "Lyon,"** which carries its own
+  associations — gastronomy, and (trait-adjacently for Nadia) a WWII Resistance / bravery history. All
+  of these sit in the *shared* opening or are second-order, so they apply across conditions and largely
+  cancel in the `inferred` vs `control` gap — but they are uncontrolled inputs with no upside, absolute
+  control numbers are not trait presence, and a cleaner design would neutralise the roles, the control
+  vocabulary, and the setting (drop the real place-name for a neutral or invented one) without breaking
+  the structural match.
 
 ---
 
