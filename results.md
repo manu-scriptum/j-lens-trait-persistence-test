@@ -3,6 +3,15 @@
 Run: 2026-07-13 · `google/gemma-3-4b-it` · `jlens@581d398` · T4 · 15 texts × 13 checkpoints ×
 18-layer band (layers 12–29). Pre-registration and all design addenda: `prediction.md`.
 
+> **Correction (2026-07-14 · re-analysis of the same run, no re-run).** The decay headline below —
+> "no stated-vs-inferred decay difference; both collapse to baseline; neither persisted" — is a
+> **normalization artifact and is superseded.** When each arm is compared to its *own* control across
+> the filler (the comparison this document already uses at d0 and reintro, but never applied to the
+> direct arm), the **verbatim trait persists** — 25–54% below its control at all ten filler
+> checkpoints for 3 of 5 characters — while the inferred trait collapses within one sentence. That is
+> registered decay outcome **#2** ("direct decays slower"), not the null. Superseded lines are flagged
+> inline; full correction, table, and interpretation in **§5**. Everything else is left as first written.
+
 ## At a glance
 
 - **A trait signal appears at the trigger for 4 of 5 characters** — the trait word ranks far better
@@ -11,7 +20,9 @@ Run: 2026-07-13 · `google/gemma-3-4b-it` · `jlens@581d398` · T4 · 15 texts �
   rather than entity attribution; see §3.)
 - **No detectable decay difference between stated and inferred traits** — both collapse to baseline
   within one sentence. A floor-bounded, recency-dominated null (*neither* persisted), not
-  demonstrated equivalence.
+  demonstrated equivalence. **[Superseded — see §5 (2026-07-14). A normalization artifact: the
+  *inferred* trait collapses, but the *verbatim* trait persists across the filler for 3/5. Registered
+  outcome #2, not a null.]**
 - **Re-mentioning the character reactivates the inferred trait above baseline in 3 of 5 cases** — a
   genuine directional signal, and the one effect not obviously reducible to recency, but a modest,
   deep-rank one (the trait becomes less buried, not prominent).
@@ -21,6 +32,8 @@ Run: 2026-07-13 · `google/gemma-3-4b-it` · `jlens@581d398` · T4 · 15 texts �
 - **Design caveat found post-hoc:** passive reads at sentence boundaries measure spontaneous
   saliency, not cued retrievability, so this design under-tests persistence. The reintroduction is
   the load-bearing measurement — and there, stated traits re-cue better than inferred (4/5). See §3.
+  **[Refined in §5: stated actually beats inferred at *every* checkpoint, not only reintro; the
+  reintro is load-bearing specifically for the inferred-vs-control *reactivation*.]**
 
 This document reports the **pre-registered comparison first**, then a clearly separated
 **exploratory** section. The exploratory analysis does not modify the confirmatory result.
@@ -75,7 +88,10 @@ is stronger, which cannot happen if the trait were being actively held).
 
 Consequently, the pre-registered decay comparison shows **no detectable difference between the stated
 and inferred traits**: both fall to baseline within one sentence (the null outcome — option 3 of the
-three we registered). Two cautions on how to read this null, because it is easy to overclaim:
+three we registered). **[Superseded — see §5 (2026-07-14): true only for the d0-normalized *shape*
+metric and the *inferred* arm. The direct arm does not fall to baseline for 3/5 — that is registered
+outcome #2. The `inferred < its own control` example cited just below is real; the missing symmetric
+check is `direct < its own control`, which holds 10/10 across the filler for those 3.]** Two cautions on how to read this null, because it is easy to overclaim:
 
 - It is **"neither persisted," not "persisted equally."** With both arms on the floor after d1, there
   is almost no dynamic range in which a provenance difference *could* appear, so the null does not
@@ -256,6 +272,66 @@ symbol itself. That is the deep cache-vs-blackboard question, made answerable pe
   control numbers are not trait presence, and a cleaner design would neutralise the roles, the control
   vocabulary, and the setting (drop the real place-name for a neutral or invented one) without breaking
   the structural match.
+
+---
+
+## 5. Correction (2026-07-14): the decay null is a normalization artifact
+
+**Status: post-hoc re-analysis of the same run — no new data.** This corrects the *prose* headline of
+§1b and the summary. It does **not** alter the pre-registered comparison as executed (that comparison
+measured d0-normalized *shape* and genuinely found no shape difference; see below).
+
+**What the headline said.** §1b and "At a glance" reported "no stated-vs-inferred decay difference —
+both fall to baseline within one sentence ... neither persisted."
+
+**Why that over-generalized.** The pre-registered decay metric normalized each condition to its *own*
+distance-0 and compared shape. That metric is dominated by the d0 echo it was built to neutralise: the
+direct arm starts at rank ≈ 3 (pure surface echo of the just-stated word), so its multiplicative drop
+across the filler is enormous, and "no direct-slower *shape*" follows trivially — while saying nothing
+about where the curve *lands*. The comparison the rest of this document relies on
+(`arm` vs its *own* control, used at d0 in §1a and at reintro in §1c) was never run on the direct arm
+across the filler. Running it, over d1–d10:
+
+| Character | direct < its control | median direct/control | inferred < its control | median inferred/control |
+|---|:--:|:--:|:--:|:--:|
+| Nadia | 10/10 | 0.75 | 2/10 | 1.10 |
+| Simon | 10/10 | 0.46 | 1/10 | 1.47 |
+| Otto  | 10/10 | 0.60 | 5/10 | 1.03 |
+| Maria | 5/10  | 1.01 | 0/10 | 1.13 |
+| Peter | 8/10  | 0.91 | 8/10 | 0.94 |
+
+(ratio < 1 = the trait word sits below its frequency floor = persisting; median over d1–d10;
+regenerable from `stickiness_summary.csv`.)
+
+For **Nadia, Simon, Otto (3/5)** the verbatim trait word stays 25–54% below its own control at **all
+ten** filler checkpoints — sustained verbatim persistence, not collapse. Their inferred arm is at or
+above its floor (ratio ≥ 1.0) the whole way. **Maria** is the anomaly (and our running example): her
+direct arm barely persists (1.01) and her inferred arm is *worse* than its control throughout (1.13).
+**Peter** produced no usable signal in either arm (both ≈ floor), consistent with his d0 null.
+
+**Corrected statement.** The inferred trait collapses to baseline within one filler sentence; the
+verbatim trait does not — it persists across the entire filler for 3 of 5. There *is* a
+stated-vs-inferred decay difference: **registered outcome #2 ("the direct condition decays slower"),
+not #3.** The pre-registered *shape* comparison is not wrong as executed — d0-normalized shapes do not
+differ — but the prose translated "no shape difference" into "both collapse / neither persisted,"
+which the each-arm-vs-control check refutes. The corrected, narrower null: no *inferred* persistence,
+and no difference in *d0-normalized shape*.
+
+**Two riders.**
+- This *strengthens* the §3 mechanism ("stated leaves a re-readable token; inferred was never
+  tokenised"). Filler-wide verbatim persistence is the strongest evidence for it in the dataset —
+  stronger than the reintro-only evidence §3 leaned on.
+- It reframes the reintroduction. "Stated re-cues better than inferred" holds at essentially *every*
+  checkpoint, filler included — the direct arm never left — so the reintro is **not** special for the
+  stated > inferred contrast. It stays load-bearing only for the **inferred-vs-control reactivation**
+  (§1c): the inferred arm climbs from below-floor mid-filler back above its own control at re-mention
+  in 3/5. That signal is untouched.
+
+**One open fork (not resolved here).** Direct persistence could be trait-specific *holding* or generic
+*token-echo* — any word that appeared in the trigger might get the same downstream rank boost via
+repetition/copy bias. Both are genuine stated-vs-inferred dissociations, but they mean different
+things. Cheaply testable in the follow-up with a neutral content-word tracer carried in the trigger;
+flagged, not settled.
 
 ---
 
