@@ -17,7 +17,10 @@ Measured by reading the trait word out of the model's residual stream with the *
 - **Inference is real but immediate.** For 4 of 5 characters the inferred trait was strongly elevated
   over its matched control *at the trigger*, then decayed to baseline within one intervening sentence.
 - **No stated-vs-inferred decay difference** — both collapse fast; the pre-registered decay
-  comparison is a **recency-dominated null**.
+  comparison is a **recency-dominated null**. **[Superseded — see [`results.md`](results.md) §5
+  (2026-07-14): a normalization artifact. The *inferred* trait collapses within one sentence, but the
+  *verbatim* trait persists 25–54% below its control across the whole filler for 3/5
+  (Nadia/Simon/Otto) — registered decay outcome #2, not a null.]**
 - **Re-mentioning the character reactivates the inferred trait above baseline in 3 of 5** — a genuine
   directional signal (the one effect not obviously recency), but modest and deep-rank.
 - **Peter (`patient`) produced no inference at all** — an informative failure.
