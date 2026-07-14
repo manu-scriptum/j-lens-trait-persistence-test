@@ -448,7 +448,12 @@ writeup came from reading an *expression* measurement as if it answered *represe
    Otto (weak) would have been caught. You cannot measure the decay of a signal that was never there.
 4. **Disentangle topic from attribution** (the Maria/shelter problem): the inferred behaviour must not
    saturate the readout with the trait's *topic*. Either match the control's topic to the inferred
-   trigger's, or read only where the topic has receded and the entity is the sole cue.
+   trigger's, or read only where the topic has receded and the entity is the sole cue. *And neutralise
+   priming one level up:* the character's **role** (fixed in the shared opening) and the **control
+   behaviour's own vocabulary** can sit near the trait's neighbourhood (nurse ~ brave, tallying ~
+   greedy), quietly lifting the control baseline. Design openings and controls to be
+   lexically/semantically distant from the trait — while keeping the control a plausible structural
+   match. (Base frequency dominates the baseline, so this is a second-order cleanup, not a rescue.)
 5. Stronger, more stereotyped negative-trait behaviours; more items before any quantitative claim.
 
 **Behavioural cross-check (optional, strongest ground truth).** Independently of the lens, end with a

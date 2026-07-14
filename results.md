@@ -51,6 +51,15 @@ character under a matched behaviour that implies *no* trait — for everyone exc
 sentence produced no signal. The comparison is inference-possible vs. nothing-to-infer, not two trait
 strengths on one scale.
 
+And read the control numbers as a *floor*, not as the trait appearing. A control rank like Nadia's
+11,502 for `brave` is roughly where the word idles in neutral text — set mostly by **base frequency**
+(a common word floors lower than a rare one, in any context; that, not any signal, is why the five
+controls differ from each other). The control also quietly absorbs the character's **role**, fixed in
+the shared opening (a clinic worker may sit a touch nearer `brave` than a baker), and any **lexical
+adjacency** in the control behaviour itself. This is exactly why the comparison is `inferred` vs
+`control` and never absolute rank: the control soaks up the frequency floor and the priming, so the gap
+isolates the trigger.
+
 ### 1b. Across the filler: fast collapse, and no stated-vs-inferred difference
 
 By distance 1–2 every curve falls into the thousands / tens-of-thousands and bounces
@@ -229,6 +238,14 @@ symbol itself. That is the deep cache-vs-blackboard question, made answerable pe
   is present.
 - **Control-trigger topic differs** from the inferred trigger's, so `inferred` vs `control` is not
   perfectly matched even absent the trait; some d0 difference may be topic, not trait (see §3).
+- **The control baseline is not perfectly clean.** Absolute control ranks are dominated by the target
+  word's base frequency, and additionally absorb (a) **role-priming** from the shared opening (a clinic
+  worker sits nearer `brave`; a repair-counter worker nearer `curious`) and (b) **lexical adjacency** in
+  the control behaviour (Peter's "lays out his tools" leans methodical ~ patient; Otto's "marks crates
+  against the delivery sheet" leans tallying ~ greedy). These are shared across conditions or
+  second-order, so the `inferred` vs `control` *gap* mostly survives — but absolute control numbers are
+  not trait presence, and a cleaner design would move openings and controls further from the trait's
+  semantic neighbourhood (without breaking the structural match).
 
 ---
 
