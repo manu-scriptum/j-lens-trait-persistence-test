@@ -369,9 +369,25 @@ At each distance *k*, run a separate sequence `[opening + trigger + filler(1..k)
 Every checkpoint is then a cache-read at a content-appropriate position. This separates the three
 states the current design smears together: spontaneously active (blackboard), dormant-but-retrievable
 (cache), and truly gone (eviction) — and makes the stated-vs-inferred decay question actually
-answerable. Include a no-trait control probe to baseline the slot. The KV-ablation causal test (erase
-the trait sentence's keys/values; does cued retrieval at distance survive, and equally in both arms?)
-rides on top of this.
+answerable. Include a no-trait control probe to baseline the slot.
+
+The KV-ablation causal test rides on top of this, and a **structural asymmetry between the arms makes
+it sharp** (this is the key design update — it matters substantially, not cosmetically). The stated
+trait leaves a **literal trait token** in the sequence — a cached position the model can attend back to
+and re-read. The inferred trait is **never tokenized**; it existed only as a transient latent, so the
+cache holds only the *behaviour* tokens, and re-cueing the trait means **re-inferring it from the
+scene**, not re-reading a symbol. The two arms therefore demand different ablations:
+- **Inferred arm:** ablate the *behaviour* tokens' keys/values. **No** cued retrieval survives → the
+  trait was pure re-inference (it lived only in those tokens, nothing was stored). **Some** survives →
+  a genuine latent trace persisted at the position where the trait was assembled, independent of the
+  scene — a real dormant binding.
+- **Stated arm:** ablate just the trait token's keys/values, to isolate how much of retrieval is the
+  re-readable symbol versus the surrounding context.
+
+Reading the two arms together separates *re-read a symbol* from *re-derive from a scene* — which is the
+actual mechanism behind the stated > inferred retrievability lead, and the deep version of the
+cache-vs-blackboard question, made answerable per arm. (Credit: this asymmetry was missed in the
+original framing — the inferred trait's never-being-a-token was the thing hiding in plain sight.)
 
 **Redesign 2 — interference / binding fidelity with a competing entity (the more novel question).**
 Persistence-over-time may be the wrong axis; the place stated and inferred plausibly dissociate is

@@ -150,10 +150,16 @@ separate cache from blackboard here; if anything the evidence tilts to dormant-c
 
 **A stated-vs-inferred difference does appear — but in retrievability, not persistence.** At the
 reintroduction (the one cued checkpoint), the *stated* trait re-cues better than the *inferred* one in
-4 of 5 (all but Nadia: direct 13986/10085/1201/603/34990 vs inferred 23261/8161/7772/2286/42770). A
-sharp lexical token looks like a better retrieval key across distance than a diffuse inferred concept.
-This is the dissociation the pre-registered *decay* comparison failed to find — it was hiding in the
-wrong checkpoint. (n = 5; a lead, not a result.)
+4 of 5 (all but Nadia: direct 13986/10085/1201/603/34990 vs inferred 23261/8161/7772/2286/42770).
+There is a concrete mechanistic candidate for this, and it may be the sharpest thing the study points
+to. The stated trait leaves a **literal `generous` token** in the sequence — a cached position whose
+key/value the model can attend back to and re-surface directly. The inferred trait is **never
+tokenized**: `generous` exists only as a transient latent (which is exactly why the readout was the
+only place it ever appeared), so what the cache holds is the *behaviour* (`bread, shelter`), and
+re-cueing the trait means **re-inferring it from the scene**, not re-reading a symbol. Re-read vs.
+re-derive — and a symbol lookup is cheaper and cleaner than re-running an inference, which is precisely
+why stated retrieves better. This is the dissociation the pre-registered *decay* comparison failed to
+find; it was hiding in the wrong checkpoint. (n = 5; a lead with a mechanism, not a result.)
 
 **A confound we under-weighted: topic-priming vs. entity attribution.** At the inferred trigger,
 concepts like `donations/charity` may surface because the sentence we just read was *about a shelter*
@@ -166,12 +172,15 @@ less cleanly established than §1 implies.
 **Why does the (spontaneous) decay show no stated-vs-inferred difference? (Speculative.)** Two
 readings. *Deflationary:* after one filler sentence neither trait is spontaneously expressible, and
 you cannot see a provenance difference in a signal that is absent (the floor effect in §1b) — the
-parsimonious account, not rule-out-able here. *Substantive:* spontaneous saliency is provenance-blind
-(both fade alike), while cued retrieval is not (stated re-cues better, above) — consistent with the
-trait being compiled into an entity-bound attribute whose *retrieval key* still reflects whether it
-arrived as a literal token or as an inference. The KV-ablation test would probe the mechanism: does
-erasing the trait sentence's keys/values kill the reintroduction, and does it kill it *equally* in
-both arms?
+parsimonious account, not rule-out-able here. *Substantive:* spontaneous saliency is provenance-blind (both fade alike), while cued retrieval is not
+(stated re-cues better) — because the two conditions leave *different things* in the cache: the stated
+trait a re-readable token, the inferred trait only a behavioural scene to re-infer from (see above).
+The KV-ablation follow-up separates these, and the asymmetry sharpens it: in the **inferred** arm,
+ablate the *behaviour* tokens' keys/values and watch whether any retrieval survives — **nothing
+survives** = the trait was pure re-inference (it lived only in those tokens); **some survives** = a
+genuine latent trace was stored at the position where the trait was assembled, independent of the
+scene. In the **stated** arm, ablating just the `generous` token isolates how much of retrieval is the
+symbol itself. That is the deep cache-vs-blackboard question, made answerable per arm.
 
 ---
 
