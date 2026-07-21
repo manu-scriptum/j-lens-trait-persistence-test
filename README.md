@@ -1,5 +1,10 @@
 # j-lens-trait-persistence-test
 
+*Independent research — no affiliated lab, no funding, single author, run on a free Colab T4. Small-n,
+single-model, exploratory; stated as such throughout. Experiments designed and pre-registered by the
+author; code, analysis scripts, and much of the prose written with Claude (Anthropic). Not
+peer-reviewed.*
+
 *(New to this? See [**our primer**](PRIMER.md) — what this is, what we found, and why it might matter,
 in plain language with no background assumed.)*
 
