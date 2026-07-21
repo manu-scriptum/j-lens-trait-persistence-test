@@ -14,6 +14,10 @@ Measured by reading the trait word out of the model's residual stream with the *
 > **Status: run complete (2026-07-13).** Pre-registered in `prediction.md` before any code; the run
 > and analysis are reported in [`results.md`](results.md). This README describes the design; the
 > findings summary is below.
+>
+> **Update (2026-07-21): a redesigned follow-up has since revised the central finding — see the
+> [Follow-up (v2)](#follow-up-v2-2026-07-21) section below.** This repo stays frozen as the record of
+> the original run.
 
 ## Findings at a glance
 
@@ -28,6 +32,31 @@ Measured by reading the trait word out of the model's residual stream with the *
   directional signal (the one effect not obviously recency), but modest and deep-rank.
 - **Peter (`patient`) produced no inference at all** — an informative failure.
 - n = 5, single-item medians, no statistics. Full report and caveats: [`results.md`](results.md).
+
+## Follow-up (v2, 2026-07-21)
+
+A redesigned successor —
+**[j-lens-trait-persistence-test-v2](https://github.com/manu-scriptum/j-lens-trait-persistence-test-v2)**
+— has since run and revises the headline above. v1's central limitation, flagged in its own
+[`results.md`](results.md) §3, is that most of its checkpoints were **passive** reads at sentence-final
+periods: they measure what the model spontaneously tends to emit, not what it can *retrieve* when
+something asks. *You cannot test a cache without querying it.* v2 makes every checkpoint a cued query
+(`"What kind of person is NAME? NAME is ___"`), and adds a concept lexicon, an empirically calibrated
+depth band, screened stimuli, and seven traits.
+
+What changed once the model is **queried** rather than watched:
+
+- **The inferred "collapse within one sentence" was a passive-read artifact.** Under cued retrieval the
+  inferred trait does **not** decay after one sentence — it stays retrievable out to **30** intervening
+  sentences. v1's collapse reflected the *read position*, not the model losing the trait.
+- **No stated-vs-inferred difference.** v1's corrected result had the verbatim trait persisting where
+  the inferred one collapsed; when *both* are queried, that gap disappears (Wilcoxon p ≈ 0.8, holding
+  out to d = 30). Strong per-character heterogeneity underneath.
+- The reintroduction result — v1's single accidental cued-style checkpoint, and its most interesting
+  finding — is what motivated the redesign.
+
+This note points forward only; it does not edit v1's frozen record. Full v2 write-up:
+[`phase2/PHASE2_RESULTS.md`](https://github.com/manu-scriptum/j-lens-trait-persistence-test-v2/blob/main/phase2/PHASE2_RESULTS.md).
 
 ## The question, precisely
 
